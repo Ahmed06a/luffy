@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt2LongVideo - 5+ Minute AI Video Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Prompt2LongVideo</h1>
+        <p>
+          Create a <strong>5+ minute</strong> AI-generated video from plain English.
+          The app creates scene plans, generates AI images, narrates with browser speech,
+          and records a downloadable WebM file.
+        </p>
+      </header>
+
+      <section class="card">
+        <label for="prompt">What video do you want to create?</label>
+        <textarea id="prompt" rows="5" placeholder="Example: Create a 6-minute motivational documentary about discipline, with calm cinematic visuals and practical advice."></textarea>
+
+        <div class="grid">
+          <label>
+            Target duration (minutes)
+            <input id="minutes" type="number" min="5" value="6" />
+          </label>
+          <label>
+            Scene duration (seconds)
+            <input id="sceneSeconds" type="number" min="6" max="20" value="10" />
+          </label>
+          <label>
+            Voice rate
+            <input id="voiceRate" type="number" min="0.6" max="1.4" value="0.95" step="0.05" />
+          </label>
+          <label>
+            Video resolution
+            <select id="resolution">
+              <option value="1280x720">1280x720 (HD)</option>
+              <option value="1920x1080">1920x1080 (Full HD)</option>
+            </select>
+          </label>
+        </div>
+
+        <button id="generateBtn">Generate 5+ Minute Video</button>
+      </section>
+
+      <section class="card status">
+        <h2>Status</h2>
+        <p id="statusText">Idle.</p>
+        <progress id="progress" max="100" value="0"></progress>
+        <div class="actions">
+          <a id="downloadLink" class="hidden" download="ai-long-video.webm">Download Video</a>
+        </div>
+      </section>
+
+      <section class="card preview">
+        <h2>Live Preview</h2>
+        <canvas id="canvas" width="1280" height="720"></canvas>
+      </section>
+
+      <section class="card tips">
+        <h2>How this works</h2>
+        <ol>
+          <li>Turns your plain-English command into a multi-scene structure.</li>
+          <li>Uses AI image generation (Pollinations) per scene.</li>
+          <li>Adds automated narration using browser text-to-speech.</li>
+          <li>Records a continuous video in-browser and lets you download it.</li>
+        </ol>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
